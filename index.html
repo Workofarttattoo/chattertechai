@@ -1023,5 +1023,23 @@
             }
         }, 30000); // Check every 30 seconds
     </script>
+<!-- Visitor Counter - Starts at 1000 -->
+<script>
+(function(){
+    const START = 1000;
+    const KEY = "vc_chattertechai";
+    let count = localStorage.getItem(KEY) || START;
+    count = parseInt(count);
+    if (!sessionStorage.getItem("vs_chattertechai")) {
+        count++;
+        localStorage.setItem(KEY, count);
+        sessionStorage.setItem("vs_chattertechai", "1");
+    }
+    const counter = document.createElement("div");
+    counter.innerHTML = '<div style="position:fixed;bottom:20px;right:20px;background:linear-gradient(135deg,#6366f1,#06b6d4);color:white;padding:12px 20px;border-radius:50px;box-shadow:0 4px 15px rgba(0,0,0,0.2);font-family:Inter,system-ui;font-size:14px;z-index:9999;display:flex;align-items:center;gap:10px;cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Visitors: <strong>' + count.toLocaleString() + '</strong></span></div>';
+    document.body.appendChild(counter.firstElementChild);
+})();
+</script>
+
 </body>
 </html>
